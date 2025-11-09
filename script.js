@@ -1,7 +1,7 @@
 let cart = [];
 
 function loadCart() {
-	const savedCart = localStorage.getItem("bookHavenCart");
+	const savedCart = sessionStorage.getItem("bookHavenCart");
 	if (savedCart) {
 		cart = JSON.parse(savedCart);
 		updateCartDisplay();
@@ -9,7 +9,7 @@ function loadCart() {
 }
 
 function saveCart() {
-	localStorage.setItem("bookHavenCart", JSON.stringify(cart));
+	sessionStorage.setItem("bookHavenCart", JSON.stringify(cart));
 	updateCartDisplay();
 }
 
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			messages.push(formData);
 			localStorage.setItem("contactMessages", JSON.stringify(messages));
 
-			alert("Thank you for your message");
+			alert(`Thank you for your message, ${formData.name}`);
 
 			contactForm.reset();
 		});
